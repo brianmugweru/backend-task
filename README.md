@@ -10,6 +10,8 @@
 
 ### Api Explanation
 - Quite simple, All it does is authenticate a user, create thumbnails and patch json object
+
+#### Json Patch
 - In order to patch json objects or create thumbnails, a user needs to be authenticated
     - simply send your user email and password to /auth/login
         ```
@@ -49,10 +51,14 @@
     };
     ```
     - Also do not forget to pass in the authorization jwt token to continue
+
+#### Create A Thumbnail
     - To create a thumbnail, pass in the image link in request body and post to the route /thumbnail-create
     - example request object includes
+    - ensure correct url link is passed
+    
     ```
     { public_url: 'http://lorempixel.com/g/200/200' }
 
     ```
-    
+
