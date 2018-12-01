@@ -33,7 +33,7 @@
         ```
     - That authenticates you and you are good to continue
 
-    - To create a json patch, send in the object you need to patch alongside the patch object/array necessary as the request object
+    - To create a json patch, send in the object you need to patch alongside the patch object/array necessary as the request object to the route /json-patch as post
     - Example for an object includes
     ```
     {
@@ -49,3 +49,10 @@
     };
     ```
     - Also do not forget to pass in the authorization jwt token to continue
+    - To create a thumbnail, pass in the image link in request body and post to the route /thumbnail-create
+    - example request object includes
+    ```
+    { public_url: 'http://lorempixel.com/g/200/200' }
+
+    ```
+    
