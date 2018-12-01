@@ -12,7 +12,7 @@
 - Quite simple, All it does is authenticate a user, create thumbnails and patch json object
 - In order to patch json objects or create thumbnails, a user needs to be authenticated
     - simply send your user email and password to /auth/login
-        ***
+        ```
         router.post('/login', (req, res) => {
             passport.authenticate('local', { session: false }, (err, user) => {
                 if (err || !user) {
@@ -30,12 +30,12 @@
                 });
             })(req, res);
         });
-        ***
+        ```
     - That authenticates you and you are good to continue
 
     - To create a json patch, send in the object you need to patch alongside the patch object/array necessary as the request object
     - Example for an object includes
-    ***
+    ```
     {
       object: {
         baz: 'qux',
@@ -47,4 +47,5 @@
         { op: 'remove', path: '/foo' },
       ],
     };
+    ```
     - Also do not forget to pass in the authorization jwt token to continue
