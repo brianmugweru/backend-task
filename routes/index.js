@@ -9,10 +9,9 @@ const imageThumbnail = require('image-thumbnail');
 const validUrl = require('valid-url');
 const { body, validationResult } = require('express-validator/check');
 
-/* GET home page. */
 router.post('/json-patch', passport.authenticate('jwt', { session: false }), body('patch').custom((value) => {
-  if (!Array.isArray(value)) {
-    throw new Error('patch value is not an array');
+  if (!Array.isArray(value) || typeof value !== 'object') {
+    throw new Error('patch value is not an array or an object');
   }
   return true;
 }), body('object').custom((value) => {
@@ -25,8 +24,9 @@ router.post('/json-patch', passport.authenticate('jwt', { session: false }), bod
   if (!errors.isEmpty()) {
     return res.status(422).json({ errors: errors.array() });
   }
-  const { document, patch } = req.body;
-  return res.status(200).send(jsonpatch.apply(document, patch));
+  const {object, patch }= req.body;
+
+  return res.status(200).send(jsonpatch.apply(object, patch));
 });
 
 router.post('/thumbnail-create', passport.authenticate('jwt', { session: false }), (req, res) => {

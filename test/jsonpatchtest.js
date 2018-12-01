@@ -36,6 +36,7 @@ describe('thumbnail', () => {
       .send(req_object)
       .set('Authorization', `Bearer ${token}`)
       .end((err, res) => {
+        console.log(res.text);
         expect(err).to.be.null;
         expect(res).to.have.status(200);
         expect(res.body).to.have.own.property('baz');
