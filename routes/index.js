@@ -24,7 +24,7 @@ router.post('/json-patch', passport.authenticate('jwt', { session: false }), bod
   if (!errors.isEmpty()) {
     return res.status(422).json({ errors: errors.array() });
   }
-  const {object, patch }= req.body;
+  const { object, patch } = req.body;
 
   return res.status(200).send(jsonpatch.apply(object, patch));
 });
@@ -33,8 +33,8 @@ router.post('/thumbnail-create', passport.authenticate('jwt', { session: false }
   if (!validUrl.isUri(req.body.public_url)) {
     return res.status(422).send('Invalid Url');
   }
-  const download = function (uri, filename, callback) {
-    request.head(uri, (err, response, body) => {
+  const download = (uri, filename, callback) => {
+    request.head(uri, (err, response) => {
       if (!response.headers['content-type'].includes('image')) {
         return callback('unsupported url');
       }
