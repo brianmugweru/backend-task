@@ -63,3 +63,6 @@
 
     ```
 
+#### Dockerize Application
+RUN $``` docker build . -t $USER/node-app```
+RUN $``` docker run -p 49000:8080 -d container_name```   
