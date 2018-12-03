@@ -9,6 +9,10 @@ const imageThumbnail = require('image-thumbnail');
 const validUrl = require('valid-url');
 const { body, validationResult } = require('express-validator/check');
 
+router.get('/', function(req, res){
+    res.status(200).json('Welcome to hackerbay api 1.0');
+});
+
 router.post('/json-patch', passport.authenticate('jwt', { session: false }), body('patch').custom((value) => {
   if (!Array.isArray(value) || typeof value !== 'object') {
     throw new Error('patch value is not an array or an object');
